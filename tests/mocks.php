@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth;
+namespace Amaurylabs\TwitterOAuth;
 
 // Mock time and random values for consistent tests with VCR
 function time()

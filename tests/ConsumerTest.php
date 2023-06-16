@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth\Tests;
+namespace Amaurylabs\TwitterOAuth\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Abraham\TwitterOAuth\Consumer;
+use Amaurylabs\TwitterOAuth\Consumer;
 
 class ConsumerTest extends TestCase
 {

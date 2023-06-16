@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth\Test;
+namespace Amaurylabs\TwitterOAuth\Test;
 
 use PHPUnit\Framework\TestCase;
-use Abraham\TwitterOAuth\TwitterOAuth;
+use Amaurylabs\TwitterOAuth\TwitterOAuth;
 
 class TwitterOAuthLastTest extends TestCase
 {

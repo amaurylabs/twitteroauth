@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth;
+namespace Amaurylabs\TwitterOAuth;
 
-use Abraham\TwitterOAuth\{
+use Amaurylabs\TwitterOAuth\{
     Consumer,
     HmacSha1,
     Response,

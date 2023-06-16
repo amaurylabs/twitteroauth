@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth\Tests;
+namespace Amaurylabs\TwitterOAuth\Tests;
 
-use Abraham\TwitterOAuth\HmacSha1;
+use Amaurylabs\TwitterOAuth\HmacSha1;
 
 class HmacSha1Test extends AbstractSignatureMethodTest
 {

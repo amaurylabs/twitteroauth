@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth\Tests;
+namespace Amaurylabs\TwitterOAuth\Tests;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ abstract class AbstractSignatureMethodTest extends TestCase
 
     protected function getRequest()
     {
-        return $this->getMockBuilder(\Abraham\TwitterOAuth\Request::class)
+        return $this->getMockBuilder(\Amaurylabs\TwitterOAuth\Request::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
@@ -45,14 +45,14 @@ abstract class AbstractSignatureMethodTest extends TestCase
         $secret = null,
         $callbackUrl = null,
     ) {
-        return $this->getMockBuilder(\Abraham\TwitterOAuth\Consumer::class)
+        return $this->getMockBuilder(\Amaurylabs\TwitterOAuth\Consumer::class)
             ->setConstructorArgs([$key, $secret, $callbackUrl])
             ->getMock();
     }
 
     protected function getToken($key = null, $secret = null)
     {
-        return $this->getMockBuilder(\Abraham\TwitterOAuth\Token::class)
+        return $this->getMockBuilder(\Amaurylabs\TwitterOAuth\Token::class)
             ->setConstructorArgs([$key, $secret])
             ->getMock();
     }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Abraham\TwitterOAuth\Tests;
+namespace Amaurylabs\TwitterOAuth\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Abraham\TwitterOAuth\Token;
+use Amaurylabs\TwitterOAuth\Token;
 
 class TokenTest extends TestCase
 {

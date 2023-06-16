@@ -1,7 +1,7 @@
 {
-  "name": "abraham/twitteroauth",
+  "name": "amaurylabs/twitteroauth",
   "type": "library",
-  "description": "The most popular PHP library for use with the Twitter OAuth REST API.",
+  "description": "A fork of abraham/twitteroauth with intended support of some older php versions. Please use the original package.",
   "keywords": [
     "twitter",
     "api",
@@ -22,17 +22,17 @@
     }
   ],
   "support": {
-    "source": "https://github.com/abraham/twitteroauth",
-    "issues": "https://github.com/abraham/twitteroauth/issues"
+    "source": "https://github.com/amaurylabs/twitteroauth",
+    "issues": "https://github.com/amaurylabs/twitteroauth/issues"
   },
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/abraham/phpunit-testlistener-vcr"
+      "url": "https://github.com/amaurylabs/twitteroauth"
     }
   ],
   "require": {
-    "php": "^8.0 || ^8.1",
+    "php": "^7.2 || ^7.3 || ^7.4 || ^8.0 || ^8.1",
     "ext-curl": "*",
     "composer/ca-bundle": "^1.2"
   },
@@ -46,7 +46,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Abraham\\TwitterOAuth\\": "src"
+      "Amaurylabs\\TwitterOAuth\\": "src"
     }
   }
 }

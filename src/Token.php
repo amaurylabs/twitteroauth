@@ -5,8 +5,6 @@
  * Copyright (c) 2007 Andy Smith
  */
 
-declare(strict_types=1);
-
 namespace Amaurylabs\TwitterOAuth;
 
 class Token
@@ -17,10 +15,10 @@ class Token
     public $secret;
 
     /**
-     * @param string $key    The OAuth Token
-     * @param string $secret The OAuth Token Secret
+     * @param string|null $key    The OAuth Token
+     * @param string|null $secret The OAuth Token Secret
      */
-    public function __construct(?string $key, ?string $secret)
+    public function __construct($key, $secret)
     {
         $this->key = $key;
         $this->secret = $secret;
@@ -32,12 +30,12 @@ class Token
      *
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return sprintf(
             'oauth_token=%s&oauth_token_secret=%s',
             Util::urlencodeRfc3986($this->key),
-            Util::urlencodeRfc3986($this->secret),
+            Util::urlencodeRfc3986($this->secret)
         );
     }
 }

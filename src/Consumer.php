@@ -11,11 +11,11 @@ namespace Amaurylabs\TwitterOAuth;
 
 class Consumer
 {
-    /** @var string  */
+    /** @var string */
     public $key;
-    /** @var string  */
+    /** @var string */
     public $secret;
-    /** @var string|null  */
+    /** @var string|null */
     public $callbackUrl;
 
     /**
@@ -26,7 +26,7 @@ class Consumer
     public function __construct(
         ?string $key,
         ?string $secret,
-        ?string $callbackUrl = null,
+        ?string $callbackUrl = null
     ) {
         $this->key = $key;
         $this->secret = $secret;

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Amaurylabs\TwitterOAuth;
 
 /**
@@ -12,15 +10,15 @@ namespace Amaurylabs\TwitterOAuth;
 class Response
 {
     /** @var string|null API path from the most recent request */
-    private ?string $apiPath = null;
+    private $apiPath = null;
     /** @var int HTTP status code from the most recent request */
-    private int $httpCode = 0;
+    private $httpCode = 0;
     /** @var array HTTP headers from the most recent request */
-    private array $headers = [];
+    private $headers = [];
     /** @var array|object|null Response body from the most recent request */
-    private array|object|null $body = [];
+    private $body = [];
     /** @var array HTTP headers from the most recent request that start with X */
-    private array $xHeaders = [];
+    private $xHeaders = [];
 
     /**
      * @param string $apiPath
@@ -47,7 +45,7 @@ class Response
     }
 
     /**
-     * @return array|object|string
+     * @return array|object|null
      */
     public function getBody()
     {

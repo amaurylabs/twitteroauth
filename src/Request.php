@@ -5,8 +5,6 @@
  * Copyright (c) 2007 Andy Smith
  */
 
-declare(strict_types=1);
-
 namespace Amaurylabs\TwitterOAuth;
 
 class Request
@@ -25,13 +23,13 @@ class Request
      * @param array|null $parameters
      */
     public function __construct(
-        string $httpMethod,
-        string $httpUrl,
-        ?array $parameters = [],
+        $httpMethod,
+        $httpUrl,
+        $parameters = []
     ) {
         $parameters = array_merge(
             Util::parseParameters(parse_url($httpUrl, PHP_URL_QUERY)),
-            $parameters,
+            $parameters
         );
         $this->parameters = $parameters;
         $this->httpMethod = $httpMethod;
@@ -52,10 +50,10 @@ class Request
     public static function fromConsumerAndToken(
         Consumer $consumer,
         Token $token = null,
-        string $httpMethod,
-        string $httpUrl,
-        array $parameters = [],
-        $json = false,
+                 $httpMethod,
+                 $httpUrl,
+                 $parameters = [],
+                 $json = false
     ) {
         $defaults = [
             'oauth_version' => Request::$version,
@@ -82,7 +80,7 @@ class Request
      * @param string $name
      * @param string $value
      */
-    public function setParameter(string $name, string $value)
+    public function setParameter($name, $value)
     {
         $this->parameters[$name] = $value;
     }
@@ -92,7 +90,7 @@ class Request
      *
      * @return string|null
      */
-    public function getParameter(string $name): ?string
+    public function getParameter($name)
     {
         return $this->parameters[$name] ?? null;
     }
@@ -100,7 +98,7 @@ class Request
     /**
      * @return array
      */
-    public function getParameters(): array
+    public function getParameters()
     {
         return $this->parameters;
     }
@@ -108,7 +106,7 @@ class Request
     /**
      * @param string $name
      */
-    public function removeParameter(string $name): void
+    public function removeParameter($name)
     {
         unset($this->parameters[$name]);
     }
@@ -118,7 +116,7 @@ class Request
      *
      * @return string
      */
-    public function getSignableParameters(): string
+    public function getSignableParameters()
     {
         // Grab all parameters
         $params = $this->parameters;
@@ -141,7 +139,7 @@ class Request
      *
      * @return string
      */
-    public function getSignatureBaseString(): string
+    public function getSignatureBaseString()
     {
         $parts = [
             $this->getNormalizedHttpMethod(),
@@ -159,7 +157,7 @@ class Request
      *
      * @return string
      */
-    public function getNormalizedHttpMethod(): string
+    public function getNormalizedHttpMethod()
     {
         return strtoupper($this->httpMethod);
     }
@@ -170,7 +168,7 @@ class Request
      *
      * @return string
      */
-    public function getNormalizedHttpUrl(): string
+    public function getNormalizedHttpUrl()
     {
         $parts = parse_url($this->httpUrl);
 
@@ -186,7 +184,7 @@ class Request
      *
      * @return string
      */
-    public function toUrl(): string
+    public function toUrl()
     {
         $postData = $this->toPostdata();
         $out = $this->getNormalizedHttpUrl();
@@ -201,7 +199,7 @@ class Request
      *
      * @return string
      */
-    public function toPostdata(): string
+    public function toPostdata()
     {
         return Util::buildHttpQuery($this->parameters);
     }
@@ -212,7 +210,7 @@ class Request
      * @return string
      * @throws TwitterOAuthException
      */
-    public function toHeader(): string
+    public function toHeader()
     {
         $first = true;
         $out = 'Authorization: OAuth';
@@ -222,7 +220,7 @@ class Request
             }
             if (is_array($v)) {
                 throw new TwitterOAuthException(
-                    'Arrays not supported in headers',
+                    'Arrays not supported in headers'
                 );
             }
             $out .= $first ? ' ' : ', ';
@@ -239,7 +237,7 @@ class Request
     /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->toUrl();
     }
@@ -252,11 +250,11 @@ class Request
     public function signRequest(
         SignatureMethod $signatureMethod,
         Consumer $consumer,
-        Token $token = null,
+        Token $token = null
     ) {
         $this->setParameter(
             'oauth_signature_method',
-            $signatureMethod->getName(),
+            $signatureMethod->getName()
         );
         $signature = $this->buildSignature($signatureMethod, $consumer, $token);
         $this->setParameter('oauth_signature', $signature);
@@ -272,15 +270,15 @@ class Request
     public function buildSignature(
         SignatureMethod $signatureMethod,
         Consumer $consumer,
-        Token $token = null,
-    ): string {
+        Token $token = null
+    ) {
         return $signatureMethod->buildSignature($this, $consumer, $token);
     }
 
     /**
      * @return string
      */
-    public static function generateNonce(): string
+    public static function generateNonce()
     {
         return md5(microtime() . random_int(PHP_INT_MIN, PHP_INT_MAX));
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Amaurylabs\TwitterOAuth;
+namespace Abraham\TwitterOAuth;
 
 /**
  * Handle setting and storing config for TwitterOAuth.

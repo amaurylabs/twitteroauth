@@ -5,8 +5,6 @@
  * Copyright (c) 2007 Andy Smith
  */
 
-declare(strict_types=1);
-
 namespace Amaurylabs\TwitterOAuth;
 
 class Util
@@ -22,7 +20,7 @@ class Util
         if (is_array($input)) {
             $output = array_map(
                 [__NAMESPACE__ . '\Util', 'urlencodeRfc3986'],
-                $input,
+                $input
             );
         } elseif (is_scalar($input)) {
             $output = rawurlencode((string) $input);
@@ -35,7 +33,7 @@ class Util
      *
      * @return string
      */
-    public static function urldecodeRfc3986($string): string
+    public static function urldecodeRfc3986($string)
     {
         return urldecode($string);
     }
@@ -49,7 +47,7 @@ class Util
      *
      * @return array
      */
-    public static function parseParameters($input): array
+    public static function parseParameters($input)
     {
         if (!is_string($input)) {
             return [];
@@ -64,7 +62,7 @@ class Util
             $value = isset($split[1]) ? Util::urldecodeRfc3986($split[1]) : '';
 
             if (isset($parameters[$parameter])) {
-                // We have already recieved parameter(s) with this name, so add to the list
+                // We have already received parameter(s) with this name, so add to the list
                 // of parameters with this name
 
                 if (is_scalar($parameters[$parameter])) {
@@ -86,7 +84,7 @@ class Util
      *
      * @return string
      */
-    public static function buildHttpQuery(array $params): string
+    public static function buildHttpQuery(array $params)
     {
         if (empty($params)) {
             return '';

@@ -43,10 +43,10 @@ class TwitterOAuth extends Config
      * @param string|null $oauthTokenSecret The Client Token Secret (optional)
      */
     public function __construct(
-        string  $consumerKey,
-        string  $consumerSecret,
-        ?string $oauthToken = null,
-        ?string $oauthTokenSecret = null
+        $consumerKey,
+        $consumerSecret,
+        $oauthToken = null,
+        $oauthTokenSecret = null
     )
     {
         $this->resetLastResponse();
@@ -792,8 +792,7 @@ class TwitterOAuth extends Config
         if ($json) {
             $options[CURLOPT_HTTPHEADER][] = 'Content-type: application/json';
             $options[CURLOPT_POSTFIELDS] = json_encode(
-                $postfields,
-                JSON_THROW_ON_ERROR
+                $postfields
             );
         } else {
             $options[CURLOPT_POSTFIELDS] = Util::buildHttpQuery($postfields);
